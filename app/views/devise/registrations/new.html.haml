@@ -1,0 +1,51 @@
+
+:javascript
+  window.user = #{@user.to_json}
+
+%head
+  %link{:href => 'http://fonts.googleapis.com/css?family=Permanent+Marker', :rel => 'stylesheet', :type => 'text/css'}
+
+%body.signup_page
+  %div.signup_form
+    %h2 Sign up
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      %div
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true
+      %div
+        = f.label :name
+        %br/
+        = f.text_field :name
+      %div
+        = f.label :dob
+        %br/
+        = f.date_select :dob, start_year: 1914, end_year: 2014
+      %div 
+        = f.label :profile_image
+        %br/
+        = f.file_field :profile_image
+      %div
+      %div
+      #showwebcam-button Use the Webcam
+      #video.dispnone  
+        %video#webcam{:autoplay => "", :width => "300"}
+        %canvas#screenshot-canvas.dispnone
+        %div#screenshot-button Capture
+        
+        
+      %div
+        = f.label :password
+        %br/
+        = f.password_field :password, autocomplete: "off"
+      %div
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "off"
+      %div
+        %input#canvasimage{:name => "canvasimage", :type => "hidden", :value => ""} 
+      %div= f.submit "Sign up"
+    = render "devise/shared/links"
+
+

@@ -1,0 +1,24 @@
+%h1 All Users
+
+.index
+  %table
+    %tr
+      %th User
+      / %th User Name
+      %th Profile Image
+    - @users.each do |user|
+      %tr
+        %td= link_to user.name, user
+        /   %td= user.username
+        %td= image_tag(user.profile_image.thumb.url) if user.profile_image.present?
+        %td= link_to 'Edit profile', edit_user_registration_path  if can? :edit, user
+        %td= link_to 'Destroy', user, :method => :delete, :confirm => 'Are you sure?' if can? :destroy, user
+        / - if can? :manage, :all 
+        /   %td
+        /     =form_for user do |f|
+        /       = f.collection_select :role, [:user, :admin], :id, :role
+        /       = f.submit
+
+  / already has a default class of 'pagination' AW
+  = paginate @users
+  %br

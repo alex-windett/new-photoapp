@@ -1,0 +1,10 @@
+#album_text
+  %h1 Edit album
+
+.index
+  #index_element
+    = render 'form'
+
+    = link_to 'Show', @album
+    \|
+    = link_to 'Back', albums_path

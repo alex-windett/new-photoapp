@@ -1,0 +1,69 @@
+:javascript
+  window.photo = #{@photo.to_json}
+%p#notice= notice
+
+%h1 
+%p.image-container{:data => {:photo_id => "#{@photo.id}"}}
+  #showing_image
+    .showing_image_info
+      = image_tag @photo.image
+      %p 
+        %b ratings:
+        %b
+        %td
+          %button#like
+            - if @ratingpositive.count > 0
+              %i{class: "fa fa-thumbs-up", :data => {:likerating_id => "#{@ratingpositive.first.id}"}}
+            - else
+              %i{class: "fa fa-thumbs-o-up"}
+        %td
+          %label#number_of_likes
+            = @photo.ratings.where(status: "positive").count
+        %td
+          %button#unlike
+            - if @ratingnegative.count > 0
+              %i{class: "fa fa-thumbs-down", :data => {:unlikerating_id => "#{@ratingnegative.first.id}"}}
+            - else
+              %i{class: "fa fa-thumbs-o-down"}
+        %td
+          %label#number_of_unlikes
+            = @photo.ratings.where(status: "negative").count
+        %p
+          = link_to image_tag('share-on-facebook-button.gif', :style => "width: 100px; display: inline;"), 'http://www.facebook.com/sharer.php?u='+@photo.image.url, :target => :blank
+        %p
+          %b Description:
+          = @photo.description
+          
+        %p
+          %b Location:
+          = @photo.location
+        %p
+          %b Longitude:
+          = @photo.longitude
+        %p
+          %b Latitude:
+          = @photo.latitude
+        %p 
+          %b Tag:
+          - @photo.tags.each do |tp|
+            = link_to tp.name, tp
+          %p 
+            %b Comments:
+            %textarea#new-comment{:placeholder => "What's your comment..."}
+            %input#currentphoto{:type=>"hidden", name: :photo_id, value: "#{@photo.id}"}
+            %table#comment-list
+              %tr
+                %th 
+                %th
+            .bottom_buttons
+              = link_to edit_album_photo_path(@album,@photo) do
+                %i{class: "fa fa-pencil"}
+              / - if can? :destroy, [@album ,@photo]
+              = link_to album_photo_path(@album,@photo), method: :delete, :confirm => 'Are you sure?' do
+                %i{class: "fa fa-trash-o"}
+              = link_to album_path(@album) do
+                %i{class: "fa fa-arrow-left"}
+    #map-canvas{:style => "width: 40%; height: 300px"}
+
+    
+

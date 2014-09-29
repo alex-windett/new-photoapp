@@ -1,0 +1,88 @@
+/ http://wdi-7-photo-app.herokuapp.com/
+
+
+!!!
+%html
+  %head
+    %title Picture Board
+    %link{:rel => "shortcut icon", :href => "/favicon.ico"}
+    %link{:href => 'http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css'}
+    %link{:href => 'http://fonts.googleapis.com/css?family=Permanent+Marker', :rel => 'stylesheet', :type => 'text/css'}
+    %link{:href => "//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css", :rel => "stylesheet"}
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ1zg7XkoaEyge8Py3jbn9fgTZvq5_QIU"
+    = csrf_meta_tags
+    %script{:type=>"text/javascript"}
+      / PK below function is for the autocomplete in the search bar. Returns an array of all users and albums which is then linked (below) to the search bar.
+      $(function(){
+      users = #{raw User.all.map{|user| user.name}.to_json};
+      albums = #{raw Album.all.map{|album| album.name}.to_json};
+      window.all = users.concat(albums);
+      $( "#autocomplete" ).autocomplete({
+      source: window.all,
+      })
+      })
+    / ###################### code for google maps ################################
+
+    %meta{:content => "initial-scale=1.0, user-scalable=no", :name => "viewport"}/
+    :css
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    
+  %body 
+    %header
+      %nav
+        %i= social_share_button_tag("Photo app!", :url => "http://wdi-7-photo-app.herokuapp.com/")
+        %ul.nav
+          %li
+            %a{:href => "/index"}
+              %l Picture Board
+          %li
+            Browse
+            %ul
+              %li
+                = link_to "users", users_path
+              %li
+                = link_to "albums", albums_path
+              %li
+                = link_to "tags", tags_path
+          %li
+            = link_to "My profile", current_user
+          %li
+            = link_to "New album", new_album_path
+          %li.search
+            = search_form_for @q do |f|
+              = f.text_field :name_or_user_name_or_user_username_cont, placeholder: "Search for ...", id: "autocomplete"
+              = f.submit
+          %li
+            = link_to "Manage site", users_path if can? :manage, :all
+          %li
+            - if user_signed_in?
+              = current_user.email
+              %li
+                = link_to "Logout", destroy_user_session_path, method: :delete
+            - else
+              %li
+                = link_to "Sign up", new_user_registration_path
+              %li
+                = link_to "Login", new_user_session_path
+
+    = yield
+
+    /   %p.footer 
+    /     |
+    /   %p.footer
+    /     =link_to 'about', page_path('about')
+    /   %p.footer 
+    /     |
+    /   %p.footer
+    /     =link_to 'terms & conditions', page_path('terms')
+    /   %p.footer 
+    /     |
+    /   %p.footer
+    /     Copyright 2014, Alex Piers & Toby
+    /   %p.footer 
+    /     |
+

@@ -1,0 +1,11 @@
+#album_text
+  %h1 Picture Board
+
+.header_div
+  #random_image
+    - @photos.each do |photo|
+      .image_info
+        = link_to "/albums/#{photo.album.id}/photos/#{photo.id}" do
+          = image_tag photo.image
+          %p= photo.location
+          %p= photo.description
