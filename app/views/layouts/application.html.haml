@@ -13,6 +13,9 @@
     = javascript_include_tag "application"
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ1zg7XkoaEyge8Py3jbn9fgTZvq5_QIU"
     = csrf_meta_tags
+    %script{:src => "/jquery-file-upload/vendor/jquery.ui.widget.js"}
+    %script{:src => "/jquery-file-upload/jquery.iframe-transport.js"}
+    %script{:src => "/jquery-file-upload/jquery.fileupload.js"}
     %script{:type=>"text/javascript"}
       / PK below function is for the autocomplete in the search bar. Returns an array of all users and albums which is then linked (below) to the search bar.
       $(function(){
