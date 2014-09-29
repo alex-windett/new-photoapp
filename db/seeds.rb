@@ -6,12 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+user2 = User.create(role: "admin", name: "Alex", email: "alexwindett@hotmail.com", password: "password", password_confirmation: "password", dob: "12/04/2012", profile_image: File.open(File.join(Rails.root.join('public'), 'alexprofilepic.jpg')))
 
-user1 = User.create(role: "admin", name: "Piers", email: "piers.karpinski@gmail.com", password: "password", password_confirmation: "password", dob: "12/04/2012", profile_image: File.open(File.join(Rails.root.join('public'), 'piersprofilepic.jpg')))
-
-user2 = User.create(role: "admin", name: "Alex", email: "alekswindett@hotmail.com", password: "password", password_confirmation: "password", dob: "12/04/2012", profile_image: File.open(File.join(Rails.root.join('public'), 'alexprofilepic.jpg')))
-
-user3 = User.create(role: "admin", name: "Toby", email: "tmerlet@gmail.com", password: "password", password_confirmation: "password", dob: "12/04/2012", profile_image: File.open(File.join(Rails.root.join('public'), 'tobyprofilepic.jpg'))) 
 
 # album1 = Album.create(name: "Funny business", description: "Load of random stuff")
 
