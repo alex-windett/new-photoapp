@@ -8,7 +8,6 @@
 
 user2 = User.create(role: "admin", name: "Alex", email: "alexwindett@hotmail.com", password: "password", password_confirmation: "password", dob: "12/04/2012", profile_image: File.open(File.join(Rails.root.join('public'), 'alexprofilepic.jpg')))
 
-
 # album1 = Album.create(name: "Funny business", description: "Load of random stuff")
 
 # album2 = Album.create(name: "My favourit holiday", description: "A weekend in paris")
