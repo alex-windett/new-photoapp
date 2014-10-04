@@ -4,6 +4,8 @@
   %div.signin_form
     %h2 Sign in
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      %p.notice= notice
+      %p.alert= alert
       %div
         = f.label :email
         %br/
