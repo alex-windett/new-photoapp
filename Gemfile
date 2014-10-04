@@ -22,6 +22,7 @@ gem 'social-share-button', '~> 0.1.6'
 gem 'geocoder'
 gem 'bootstrap-kaminari-views' # incase we do use bootstrap
 gem "jquery-ui-rails"
+gem 'newrelic_rpm'
 
 # Gems used only for assets and not required
 # in production environments by default.

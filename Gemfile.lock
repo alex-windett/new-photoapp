@@ -117,6 +117,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.9.1)
+    newrelic_rpm (3.9.4.245)
     nokogiri (1.5.11)
     orm_adapter (0.5.0)
     pg (0.17.1)
@@ -220,6 +221,7 @@ DEPENDENCIES
   kaminari
   letter_opener
   meta_request
+  newrelic_rpm
   pg
   pry-rails
   pry-stack_explorer
