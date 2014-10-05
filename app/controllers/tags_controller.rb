@@ -15,7 +15,7 @@ class TagsController < ApplicationController
   # GET /tags/1.json
   def show
     @tag = Tag.find(params[:id])
-    @tags = Tag.all
+    # @tags = Tag.all
     @photo = Photo.all
     @album = Album.find(params[:id])
 

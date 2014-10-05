@@ -2,7 +2,7 @@ class Photo < ActiveRecord::Base
 
   has_and_belongs_to_many :tags
   has_many :ratings
-  has_many :comments
+  has_many :comments, dependent: :destroy
   belongs_to :album
 
   attr_accessible :description, :location, :image, :tags
