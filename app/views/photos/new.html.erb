@@ -17,13 +17,11 @@
                 url: '<%= album_photos_path(@album) %>',
                 done: function (e, data) {
                     $.each(data.result, function (index, file) {
-                    console.log(file)
-                    console.log(index)
-                    console.log('here') 
+ 
                         $('<li><img src="'+file.url+'"></li>').appendTo('#thumbs');
-                    });
+                    })
                 }
-            });
+            })
         });
     </script>
     </br>

@@ -7,6 +7,9 @@
       - @tag.photos.each do |photo|
         .image_info
           = link_to (image_tag photo.image), album_photo_path(photo.album, photo)
-          = "Album name: "
-          = photo.album.name
+          %p
+            = photo.album.user.name
+            = "'s album"
+          %p 
+            = photo.album.name
   = link_to 'See all tags', tags_path

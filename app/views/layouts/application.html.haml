@@ -23,8 +23,8 @@
       users = #{raw User.all.map{|user| user.name}.to_json};
       albums = #{raw Album.all.map{|album| album.name}.to_json};
       window.all = users.concat(albums);
-      $( "#autocomplete" ).autocomplete({
-      source: window.all,
+      $("#autocomplete").autocomplete({
+      source: window.all
       })
       })
     / ###################### code for google maps ################################
