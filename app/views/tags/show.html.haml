@@ -6,7 +6,7 @@
 
 #random_image
   %p
-    - @tag.photos.each do |photo_tag|
+    - @tag.photos.each do |photo|
       .image_info
-        / = image_tag photo_tag.image
-        = link_to (image_tag photo_tag.image), album_photo_path(@album, photo_tag)
+        / # = raise
+        = link_to (image_tag photo.image), album_photo_path(@album, photo)
