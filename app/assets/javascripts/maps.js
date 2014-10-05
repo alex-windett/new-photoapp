@@ -22,7 +22,7 @@ $(function(){
         var zoomlevel = 1
       }else{
         var myLatlng = new google.maps.LatLng(window.photo.latitude, window.photo.longitude);
-        var zoomlevel = 10
+        var zoomlevel = 6
       }
 
       var mapOptions = {
