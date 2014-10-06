@@ -3,7 +3,7 @@
 #album_text
   %h1= @tag.name
   \
-  %p= link_to 'See all tags', tags_path
+  %p= link_to 'Back to all tags', tags_path
 
 #random_image
   - @tag.photos.each do |photo|
