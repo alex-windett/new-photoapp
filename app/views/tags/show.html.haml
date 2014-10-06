@@ -9,7 +9,6 @@
           = link_to (image_tag photo.image), album_photo_path(photo.album, photo)
           %p
             = photo.album.user.name
-            = "'s album"
-          %p 
+            = "'s album: "
             = photo.album.name
   = link_to 'See all tags', tags_path
