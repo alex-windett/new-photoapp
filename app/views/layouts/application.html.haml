@@ -61,10 +61,8 @@
               = f.text_field :name_or_user_name_or_user_username_cont, placeholder: "Search for ...", id: "autocomplete"
               = f.submit
           %li
-            = link_to "Manage site", users_path if can? :manage, :all
-          %li
             - if user_signed_in?
-              = current_user.email
+              = link_to current_user.email, current_user
               %li
                 = link_to "Logout", destroy_user_session_path, method: :delete
             - else
