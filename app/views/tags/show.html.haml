@@ -1,14 +1,13 @@
 %p#notice= notice
 
-#album_text
-  %h1= @tag.name.capitalize
-  #random_image
-    %p
-      - @tag.photos.each do |photo|
-        .image_info
-          = link_to (image_tag photo.image), album_photo_path(photo.album, photo)
-          %p
-            = photo.album.user.name
-            = "'s album: "
-            = photo.album.name
-  = link_to 'See all tags', tags_path
+#random_image
+  - @tag.photos.each do |photo|
+    .image_info
+      %h3= @tag.name.capitalize
+      = link_to (image_tag photo.image), album_photo_path(photo.album, photo)
+      %p
+        = photo.album.user.name
+        = "'s album: "
+        = photo.album.name
+
+= link_to 'See all tags', tags_path
