@@ -1,5 +1,10 @@
 %p#notice= notice
 
+#album_text
+  %h1= @tag.name
+  \
+  %p= link_to 'See all tags', tags_path
+
 #random_image
   - @tag.photos.each do |photo|
     .image_info
@@ -9,5 +14,3 @@
         = photo.album.user.name
         = "'s album: "
         = photo.album.name
-
-= link_to 'See all tags', tags_path
