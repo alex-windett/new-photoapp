@@ -7,7 +7,7 @@
           %li= msg
 
   .field
-    = f.label :user_id, "#{current_user.name}"
+    = f.label :user_id, if current_user.present? then "#{current_user.name}" else "Unregistered Member" end
     = f.hidden_field :user_id
   .field
     = f.label :name
