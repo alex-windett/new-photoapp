@@ -11,9 +11,9 @@ Photoapp::Application.routes.draw do
 
   resources :comments
 
-  resources :tags
+  resources :tags, path_names: { new: "create", edit: "change", destroy: "remove"}
 
-  resources :index, :only => [:show, :index] 
+  resources :index, :only => [:show, :index]
 
   root :to => 'index#show'
 
