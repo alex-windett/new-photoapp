@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_filter :authenticate_user!
+  # before_filter :authenticate_user!
   # GET /photos
   # GET /photos.json
   before_filter :the_album
